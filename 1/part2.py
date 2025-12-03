@@ -7,16 +7,24 @@ count = 0
 for line in input:
     dir = line[0]
     num = int(line[1:])
-    sign = 1
 
+    sign = 1
     if dir == "L":
         sign = -1
 
-    for _ in range(num):
-        start += sign
-        start %= 100
+    full_rotations = num // 100
+    count += full_rotations
 
-        if start == 0:
+    remainder = num % 100
+
+    if dir == "L" and remainder >= start:
+        if start != 0:
             count += 1
+
+    if dir == "R" and start + remainder >= 100:
+        count += 1
+
+    start = start + (sign * num)
+    start %= 100
 
 print(count)
