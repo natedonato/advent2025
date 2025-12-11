@@ -13,3 +13,7 @@ select = [
     "I",
     "A"
 ]
+
+ignore = [
+    "fE501"
+]
